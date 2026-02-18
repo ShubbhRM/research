@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research — Shubbh Mewada</title>
+  <title>Research - Shubbh Rajesh Mewada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
@@ -103,6 +103,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       padding-top: 80px;
     }
 
@@ -140,6 +142,7 @@
       max-width: 580px;
       line-height: 1.7;
       margin-bottom: 40px;
+      text-align: center;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.6s;
     }
@@ -150,6 +153,7 @@
       flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 56px;
+      justify-content: center;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.8s;
     }
@@ -172,6 +176,7 @@
       display: flex;
       gap: 48px;
       flex-wrap: wrap;
+      justify-content: center;
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 1s;
     }
@@ -537,11 +542,11 @@
   <div class="wrapper" style="position:relative;">
     <p class="hero-label">// Research Portfolio</p>
     <h1 class="hero-name">
-      Shubbh<br/><span class="grad">Mewada</span>
+      Shubbh Rajesh<br/><span class="grad">Mewada</span>
     </h1>
     <p class="hero-subtitle">
-      Building at the intersection of Deep Learning, Computer Vision, and NLP.
-      8 peer-reviewed conference papers. 105 citations.
+      Building at the intersection of Deep Learning, Computer Vision, and NLP.<br/>
+      <span id="subtitle-stats"></span>
     </p>
     <div class="domain-tags">
       <span class="domain-tag cyan">Deep Learning</span>
@@ -554,19 +559,19 @@
     </div>
     <div class="stats-bar">
       <div class="stat">
-        <span class="stat-number" data-target="8">0</span>
+        <span class="stat-number" data-key="papers">0</span>
         <span class="stat-label">Papers</span>
       </div>
       <div class="stat">
-        <span class="stat-number" data-target="105">0</span>
+        <span class="stat-number" data-key="citations">0</span>
         <span class="stat-label">Citations</span>
       </div>
       <div class="stat">
-        <span class="stat-number" data-target="4">0</span>
+        <span class="stat-number" data-key="hIndex">0</span>
         <span class="stat-label">h-index</span>
       </div>
       <div class="stat">
-        <span class="stat-number" data-target="4">0</span>
+        <span class="stat-number" data-key="i10Index">0</span>
         <span class="stat-label">i10-index</span>
       </div>
     </div>
@@ -709,7 +714,7 @@
         <div class="card-venue">
           <span class="venue-badge">ICCI 2023</span>
           <span class="year-badge">2023</span>
-          <span class="cite-badge">—</span>
+          <span class="cite-badge">N/A</span>
         </div>
         <p class="card-abstract">
           Examines the integration of deep learning architectures for financial time-series forecasting, evaluating model capacity to capture complex market dynamics for improved stock price prediction accuracy.
@@ -734,7 +739,7 @@
         <div class="card-venue">
           <span class="venue-badge">IEEE Conference</span>
           <span class="year-badge">2023</span>
-          <span class="cite-badge">—</span>
+          <span class="cite-badge">N/A</span>
         </div>
         <p class="card-abstract">
           Provides a comprehensive comparative analysis of classical machine learning and modern deep learning models for stock price prediction, evaluating predictive performance and model robustness across diverse market conditions.
@@ -759,7 +764,7 @@
         <div class="card-venue">
           <span class="venue-badge">IEEE Conference</span>
           <span class="year-badge">2023</span>
-          <span class="cite-badge">—</span>
+          <span class="cite-badge">N/A</span>
         </div>
         <p class="card-abstract">
           Develops an NLP-driven pipeline using Naïve Bayes classification to automate the identification of cyberbullying in online text, addressing online safety through intelligent content moderation and harm detection systems.
@@ -784,7 +789,7 @@
         <div class="card-venue">
           <span class="venue-badge">IEEE Conference</span>
           <span class="year-badge">2023</span>
-          <span class="cite-badge">—</span>
+          <span class="cite-badge">N/A</span>
         </div>
         <p class="card-abstract">
           Examines machine learning approaches to forecast Uber trip durations while incorporating weather and traffic flow variables, advancing urban mobility intelligence and data-driven transportation planning.
@@ -816,13 +821,13 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          I'm <strong>Shubbh Mewada</strong>, a researcher and engineer working at the intersection of
+          I'm <strong>Shubbh Rajesh Mewada</strong>, a researcher and engineer working at the intersection of
           <strong>Machine Learning, Deep Learning, Computer Vision, and NLP</strong>.
         </p>
         <br/>
         <p>
           My published work spans medical AI, agricultural image classification, music signal processing,
-          financial forecasting, and online safety — with <strong>105 citations</strong> across 8 conference papers,
+          financial forecasting, and online safety, with <strong id="about-citations">105 citations</strong> across 8 conference papers,
           all published in 2023.
         </p>
         <br/>
@@ -847,7 +852,7 @@
           </div>
           <div class="link-meta">
             <span class="link-name">Google Scholar</span>
-            <span class="link-sub">105 citations · h-index 4</span>
+            <span class="link-sub" id="scholar-link-sub">105 citations · h-index 4</span>
           </div>
           <span class="link-arrow">↗</span>
         </a>
@@ -864,6 +869,35 @@
 </footer>
 
 <!-- ─── Scripts ──────────────────────────────────────────────────── -->
+<script>
+  /* ══════════════════════════════════════════════════════
+     SCHOLAR STATS CONFIG
+     Update these whenever your Google Scholar numbers change.
+     https://scholar.google.com/citations?user=0umeaPAAAAAJ&hl=en
+     ══════════════════════════════════════════════════════ */
+  const SCHOLAR_STATS = {
+    papers:   8,
+    citations: 105,
+    hIndex:   4,
+    i10Index: 4,
+  };
+  /* ══════════════════════════════════════════════════════ */
+
+  // Inject stats into subtitle and about section
+  const subtitleEl = document.getElementById('subtitle-stats');
+  if (subtitleEl) {
+    subtitleEl.textContent =
+      `${SCHOLAR_STATS.papers} peer-reviewed conference papers. ${SCHOLAR_STATS.citations} citations.`;
+  }
+  const aboutCitEl = document.getElementById('about-citations');
+  if (aboutCitEl) {
+    aboutCitEl.textContent = `${SCHOLAR_STATS.citations} citations`;
+  }
+  const scholarSubEl = document.getElementById('scholar-link-sub');
+  if (scholarSubEl) {
+    scholarSubEl.textContent = `${SCHOLAR_STATS.citations} citations · h-index ${SCHOLAR_STATS.hIndex}`;
+  }
+</script>
 <script>
   /* ── Neural network particle animation ── */
   (function () {
@@ -944,7 +978,7 @@
 
   /* ── Animated stat counters ── */
   function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
+    const target = SCHOLAR_STATS[el.dataset.key] ?? parseInt(el.dataset.target, 10);
     const duration = 1600;
     const start = performance.now();
     function step(now) {
